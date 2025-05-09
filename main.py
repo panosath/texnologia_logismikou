@@ -21,105 +21,6 @@ st.set_page_config(
 )
 
 
-# Updated Custom CSS with more comprehensive dark mode support
-st.markdown("""
-<style>
-    /* Light mode styles */
-    .main {
-        background-color: #f5f7f9;
-        color: #2c3e50;
-    }
-    .stApp {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    h1, h2, h3 {
-        color: #2c3e50;
-    }
-    .stButton button {
-        background-color: #3498db;
-        color: white;
-    }
-    .stButton button:hover {
-        background-color: #2980b9;
-    }
-    
-    /* Dark mode styles */
-    [data-theme="dark"] .main {
-        background-color: #0e1117;
-        color: #fafafa;
-    }
-    [data-theme="dark"] h1, 
-    [data-theme="dark"] h2, 
-    [data-theme="dark"] h3, 
-    [data-theme="dark"] p, 
-    [data-theme="dark"] .stMarkdown,
-    [data-theme="dark"] label,
-    [data-theme="dark"] .stTextInput label,
-    [data-theme="dark"] .stFileUploader label,
-    [data-theme="dark"] .stSelectbox label,
-    [data-theme="dark"] .stSlider label,
-    [data-theme="dark"] .stTextInput div,
-    [data-theme="dark"] .stFileUploader div,
-    [data-theme="dark"] .stSelectbox div {
-        color: #fafafa !important;
-    }
-    
-    /* Fix info boxes in dark mode */
-    [data-theme="dark"] .stAlert {
-        background-color: rgba(74, 118, 168, 0.2) !important;
-        color: #fafafa !important;
-    }
-    [data-theme="dark"] .stAlert div {
-        color: #fafafa !important;
-    }
-    
-    /* Fix success messages */
-    [data-theme="dark"] .element-container div[data-testid="stText"] {
-        color: #fafafa !important;
-    }
-    
-    /* Fix info text */
-    [data-theme="dark"] .stInfo div {
-        color: #fafafa !important;
-    }
-    
-    /* Fix helper text under widgets */
-    [data-theme="dark"] small {
-        color: #d0d0d0 !important;
-    }
-    
-    /* Fix button styling */
-    [data-theme="dark"] .stButton button {
-        background-color: #4a76a8;
-        color: white;
-    }
-    [data-theme="dark"] .stButton button:hover {
-        background-color: #3a5c85;
-    }
-    
-    /* Fix file uploader */
-    [data-theme="dark"] .uploadedFile {
-        color: #fafafa !important;
-    }
-    [data-theme="dark"] .uploadedFileName {
-        color: #fafafa !important;
-    }
-    
-    /* Fix dataframe */
-    [data-theme="dark"] .dataframe {
-        color: #fafafa !important;
-    }
-    
-    /* Fix all text elements */
-    [data-theme="dark"] div:not(.stActionButton):not(.stException) > div > span {
-        color: #fafafa !important;
-    }
-</style>
-""", unsafe_allow_html=True)
-
-
-
 
 # Sidebar for navigation
 st.sidebar.title("🧬 Molecular Biology Analysis")
@@ -193,8 +94,6 @@ if app_mode == "Home":
         # Save to CSV
         example_data.to_csv("sample_data.csv", index=False)
         st.success("Sample dataset created! You can now use it in any module.")
-
-# revised css code above
 
 # 1. Data Upload
 elif app_mode == "1. Data Upload":
