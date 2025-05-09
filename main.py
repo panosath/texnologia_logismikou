@@ -29,7 +29,7 @@ app_mode = st.sidebar.selectbox(
     "Choose the app mode",
     ["Home", "1. Data Upload", "2. K-Means Clustering", "3. Adjustable Clustering", 
      "4. Interactive Plotting", "5. Multi-tab Interface", "6. Sidebar Settings", 
-     "7. Dynamic Filtering", "8. Train Classification Model", "9. Prediction"]
+     "7. Dynamic Filtering", "8. Train Classification Model", "9. Prediction", "10. About the Project Team"]
 )
 
 # Utility function for downloading data
@@ -338,7 +338,7 @@ elif app_mode == "8. Train Classification Model":
 # 9. Prediction
 elif app_mode == "9. Prediction":
     st.title("9. Upload Test Data & Predict")
-
+    
     uploaded_model = st.file_uploader("Upload Trained Model", type=["pkl"])
     uploaded_test = st.file_uploader("Upload Test CSV", type=["csv"])
 
@@ -395,3 +395,18 @@ elif app_mode == "9. Prediction":
         st.info("Please upload a trained model file (.pkl)")
     elif not uploaded_test:
         st.info("Please upload test data (.csv)")
+
+# 10 Names and contributions
+elif app_mode == "10. About the Project Team":
+    st.title("About Us!")
+    st.write("""
+    ### A page about the team members and each one's contributions on the project.
+    
+    
+    1.  **ΗΛΙΑΣ ΣΟΥΛΕΛΕΣ-inf2021208:** Python code writing, Docker config, testing and debugging
+    2.  **ΕΛΕΥΘΕΡΙΟΣ-ΓΕΩΡΓΙΟΣ ΜΠΟΝΤΗΣ-inf2021160:** Latex writing, testing
+    3.  **ΑΘΑΝΑΣΙΑΔΗΣ ΠΑΝΑΓΙΩΤΗΣ-Π2015167:** Python code writing, Docker config, GitHub repository owner, testing and debugging
+    
+        
+    Thank you for using our app for the analysis of molecular biology data. We hope we helped you!
+    """)
