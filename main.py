@@ -53,6 +53,45 @@ def get_model_download_link(model, filename, text):
 
 # Home page
 if app_mode == "Home":
+    # background image
+    def add_bg_from_url():
+        # urls for images
+        light_image_url = "https://www.ppt-backgrounds.net/thumbs/dna-design-downloads.jpeg"
+        dark_image_url = "https://www.ppt-backgrounds.net/thumbs/dna-design-downloads.jpeg"
+        
+        return f"""
+        <style>
+        /* Light mode - target the specific Streamlit container */
+        [data-testid="stAppViewContainer"] {{
+            background: url("{light_image_url}");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}
+
+        /* Dark mode - override when dark theme is active */
+        [data-theme="dark"] [data-testid="stAppViewContainer"] {{
+            background: url("{dark_image_url}");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}
+        
+        /* Make content area transparent */
+        [data-testid="stHeader"] {{
+            background-color: rgba(0,0,0,0);
+        }}
+        
+        [data-testid="stToolbar"] {{
+            right: 2rem;
+        }}
+        </style>
+        """
+    
+    st.markdown(add_bg_from_url(), unsafe_allow_html=True)
+    
     st.title("Molecular Biology Data Analysis Web App")
     st.write("""
     ### Welcome to the Molecular Biology Data Analysis Web Application!
@@ -68,9 +107,12 @@ if app_mode == "Home":
     7. **Dynamic Filtering**: Filter your data based on text input
     8. **Train Classification Model**: Build a Random Forest classifier
     9. **Prediction**: Use trained models to make predictions
+    10. **About the Project Team**: Information about the creators of this web app
     
     To begin, select an option from the sidebar and upload your data.
     """)
+
+
     
     st.info("This application is designed for molecular biology data analysis but can be used with any tabular data.")
     
