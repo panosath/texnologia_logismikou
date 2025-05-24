@@ -12,7 +12,6 @@ from io import StringIO
 import os
 
 
-# Set page config - disable the theme option
 st.set_page_config(
     page_title="Molecular Biology Data Analysis",
     page_icon="🧬",
@@ -22,7 +21,7 @@ st.set_page_config(
 
 
 
-# Sidebar for navigation
+# sidebar navigation
 st.sidebar.title("🧬 Molecular Biology Analysis")
 st.sidebar.markdown("---")
 app_mode = st.sidebar.selectbox(
@@ -32,14 +31,14 @@ app_mode = st.sidebar.selectbox(
      "7. Dynamic Filtering", "8. Train Classification Model", "9. Prediction", "10. About the Project Team"]
 )
 
-# Utility function for downloading data
+# data downloader utility function
 def get_download_link(df, filename, text):
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()
     href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">{text}</a>'
     return href
 
-# Utility function for saving models
+# saving models utility
 def get_model_download_link(model, filename, text):
     """Generate a link to download the model"""
     buffer = StringIO()
@@ -118,22 +117,22 @@ if app_mode == "Home":
     
     # Sample dataset option
     if st.button("Use Sample Dataset"):
-        # Create example data
+        # create example data
         np.random.seed(42)
         n_samples = 100
         
-        # Gene expression data (4 genes)
+        # gene expression data (4 genes)
         gene_expr = np.random.normal(0, 1, size=(n_samples, 4))
         gene_cols = [f"Gene_{i}" for i in range(1, 5)]
         
-        # Create labels for the last column
+        # create labels for the last column
         species = np.random.choice(['setosa', 'versicolor', 'virginica'], size=n_samples)
         
-        # Create DataFrame
+        # create dataframe
         example_data = pd.DataFrame(gene_expr, columns=gene_cols)
         example_data['Species'] = species
         
-        # Save to CSV
+        # save to CSV
         example_data.to_csv("sample_data.csv", index=False)
         st.success("Sample dataset created! You can now use it in any module.")
 
